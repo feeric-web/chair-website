@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: white;
+      color: #007BFF;
+      padding: 40px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .image-placeholder {
+      flex: 1;
+      min-width: 300px;
+      height: 300px;
+      background-color: #e0f0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      border: 2px dashed #007BFF;
+    }
+
+    .header-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .running-line-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .running-line {
+      display: flex;
+      width: max-content;
+      animation: scrollImages 20s linear infinite;
+    }
+
+    .running-line img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border: 1px solid #007BFF;
+      border-radius: 8px;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    @keyframes scrollImages {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Duplicate images for seamless loop */
+    .running-line::after {
+      content: '';
+      display: flex;
+      gap: 10px;
+    }
+
+    .accordion {
+      width: 100%;
+    }
+
+    .accordion-item {
+      border-top: 1px solid #007BFF;
+    }
+
+    .accordion-header {
+      cursor: pointer;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: 600;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      text-align: left;
+      width: 100%;
+    }
+
+    .accordion-header:hover {
+      background-color: #f0faff;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="image-placeholder">Image Placeholder</div>
+    <div class="header-text">
+      <h1>Welcome to Our Product</h1>
+      <p>We offer the best solutions for your business needs. Discover more below.</p>
+    </div>
+  </div>
+
+  <div class="running-line-container">
+    <div class="running-line" id="runningLine">
+      <!-- Repeat twice to create seamless loop -->
+      <div class="running-line-content">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+      </div>
+      <div class="running-line-content">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+        <img src="https://via.placeholder.com/60" alt="Placeholder">
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header">Section One</button>
+      <div class="accordion-content">
+        This is the content of section one. It will expand and collapse when you click the header.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Section Two</button>
+      <div class="accordion-content">
+        This is the content of section two. It will expand and collapse when you click the header.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Section Three</button>
+      <div class="accordion-content">
+        This is the content of section three. It will expand and collapse when you click the header.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Section Four</button>
+      <div class="accordion-content">
+        This is the content of section four. It will expand and collapse when you click the header.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Section Five</button>
+      <div class="accordion-content">
+        This is the content of section five. It will expand and collapse when you click the header.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const isOpen = content.style.display === 'block';
+        document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
+        if (!isOpen) {
+          content.style.display = 'block';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
